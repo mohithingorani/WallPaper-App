@@ -1,12 +1,11 @@
-import { Link } from "expo-router";
+import { Slot } from "expo-router";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Explore() {
+export default function AccountInfoLayout() {
   return (
     <SafeAreaView>
-      <Text>Explore Page</Text>
-      <Link href="/accountinfo">Account Information</Link>
+      <Slot />
     </SafeAreaView>
   );
 }
