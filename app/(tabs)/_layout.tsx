@@ -1,7 +1,9 @@
 import { Tabs } from "expo-router";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function RootLayout() {
   return (
+    <GestureHandlerRootView>
     <Tabs screenOptions={{ tabBarActiveTintColor: "blue", headerShown: false }}>
       <Tabs.Screen
         name="foryou"
@@ -31,5 +33,6 @@ export default function RootLayout() {
         }}
       />
     </Tabs>
+    </GestureHandlerRootView>
   );
 }
