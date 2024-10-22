@@ -1,9 +1,17 @@
 import React, { useCallback, useMemo, useRef } from "react";
-import { View, Text, StyleSheet, Image, Button, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
 import { Wallpaper } from "@/hooks/useWallpapers";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export const DownloadPicture = ({
   onClose,
@@ -37,10 +45,17 @@ export const DownloadPicture = ({
         style={[styles.contentContainer, { paddingTop: 0, marginTop: 0 }]}
       >
         <Image style={styles.image} source={{ uri: wallPaper.url }} />
+        <View style={styles.topbar}>
+          <Ionicons onPress={onClose} name="close" size={30} color="white" />
+          <View style={styles.topbarinner}>
+            <Ionicons name="share" size={30} color="white" />
+            <Ionicons name="heart" size={30} color="white" />
+          </View>
+        </View>
         <Text>{wallPaper.name}</Text>
-        <Pressable style={styles.button}>
+        <TouchableOpacity style={styles.button}>
           <Text style={styles.text}>DOWNLOAD WALLPAPER</Text>
-        </Pressable>
+        </TouchableOpacity>
       </BottomSheetView>
     </BottomSheet>
   );
@@ -64,11 +79,23 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     borderRadius: 10,
-    width: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   text: {
     color: "white",
   },
+  topbar: {
+    position: "absolute",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    width: "100%",
+    alignItems: "center",
+  },
+    topbarinner: {
+        flexDirection: "row",
+        alignItems : "center",
+        gap: 12
+    },
 });

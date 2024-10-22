@@ -19,7 +19,7 @@ export default function Explore() {
           <Image
             style={{ flex: 1 }}
             source={{
-              uri: wallpapers[0].url,
+              uri: "https://ideogram.ai/assets/image/lossless/response/QqYrME2zQuK7ccCnIlFHjg",
             }}
           />
         }

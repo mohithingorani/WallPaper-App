@@ -1,4 +1,4 @@
-export interface  Wallpaper {
+export interface Wallpaper {
   url: string;
   name: string;
 }
