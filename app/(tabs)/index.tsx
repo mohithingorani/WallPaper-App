@@ -23,13 +23,14 @@ export default function Explore() {
         headerBackgroundColor={{ dark: "black", light: "white" }}
       >
         <View style={styles.container}>
-          <View style={styles.innerContainer}>
+          <View >
             <FlatList
               data={wallpapers}
               renderItem={({ item }) => <ImageCard wallpaper={item} />}
               keyExtractor={(item) => item.name}
             />
           </View>
+
           <View style={styles.innerContainer}>
             {wallpapers.map((w, key) => {
               return <ImageCard key={key} wallpaper={w} />;
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flex: 1,
+    gap: 10,
   },
   innerContainer: {
     flex: 1,
