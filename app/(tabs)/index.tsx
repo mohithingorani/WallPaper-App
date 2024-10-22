@@ -1,14 +1,17 @@
+import { DownloadPicture } from "@/components/BottomSheet";
 import { ImageCard } from "@/components/ImageCard";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { useWallpapers } from "@/hooks/useWallpapers";
-import { useEffect, useState } from "react";
+import { useWallpapers, Wallpaper } from "@/hooks/useWallpapers";
+import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Explore() {
   const wallpapers = useWallpapers();
-
+  const [selectedWallPaper, setSelectedWallpaper] = useState<Wallpaper | null>(
+    wallpapers[0]
+  );
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ParallaxScrollView
@@ -22,22 +25,42 @@ export default function Explore() {
         }
         headerBackgroundColor={{ dark: "black", light: "white" }}
       >
+        <Text>{JSON.stringify(selectedWallPaper?.name)}</Text>
         <View style={styles.container}>
-          <View >
+          <View style={styles.innerContainer}>
             <FlatList
-              data={wallpapers}
-              renderItem={({ item }) => <ImageCard wallpaper={item} />}
+              data={wallpapers.filter((_, index) => index % 2 == 0)}
+              renderItem={({ item }) => (
+                <ImageCard
+                  onPress={() => {
+                    setSelectedWallpaper(item);
+                  }}
+                  wallpaper={item}
+                />
+              )}
               keyExtractor={(item) => item.name}
             />
           </View>
 
           <View style={styles.innerContainer}>
-            {wallpapers.map((w, key) => {
-              return <ImageCard key={key} wallpaper={w} />;
-            })}
+            <FlatList
+              data={wallpapers.filter((_, index) => index % 2 == 1)}
+              renderItem={({ item }) => (
+                <ImageCard
+                  onPress={() => {
+                    setSelectedWallpaper(item);
+                  }}
+                  wallpaper={item}
+                />
+              )}
+              keyExtractor={(item) => item.name}
+            />
           </View>
         </View>
       </ParallaxScrollView>
+      {selectedWallPaper && <DownloadPicture onClose={()=>{
+        setSelectedWallpaper(null);
+      }}/>}
     </SafeAreaView>
   );
 }

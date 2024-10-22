@@ -21,7 +21,7 @@ export const DownloadPicture = ({ onClose }: { onClose: () => void }) => {
         onChange={handleSheetChanges}
         snapPoints={["99%"]}
         enablePanDownToClose
-        handleIndicatorStyle ={{height:0}}
+        handleIndicatorStyle={{ height: 0 }}
       >
         <BottomSheetView style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>
@@ -34,6 +34,7 @@ export const DownloadPicture = ({ onClose }: { onClose: () => void }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "transparent",
   },
   contentContainer: {
     flex: 1,
