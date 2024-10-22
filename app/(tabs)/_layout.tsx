@@ -4,16 +4,16 @@ export default function RootLayout() {
   return (
     <Tabs screenOptions={{ tabBarActiveTintColor: "blue", headerShown: false }}>
       <Tabs.Screen
-        name="index"
+        name="foryou"
         options={{
-          title: "rushil chutiya",
+          title: "For You",
           tabBarIcon: ({ color }) => (
             <FontAwesome size={28} name="home" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="index"
         options={{
           title: "Explore",
           tabBarIcon: ({ color }) => (
