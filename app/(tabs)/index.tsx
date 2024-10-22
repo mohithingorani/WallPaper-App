@@ -58,7 +58,7 @@ export default function Explore() {
           </View>
         </View>
       </ParallaxScrollView>
-      {selectedWallPaper && <DownloadPicture onClose={()=>{
+      {selectedWallPaper && <DownloadPicture wallPaper={selectedWallPaper} onClose={()=>{
         setSelectedWallpaper(null);
       }}/>}
     </SafeAreaView>
